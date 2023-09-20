@@ -1,4 +1,4 @@
-import productsModel from "./models/products.model.js";
+import productsModel from "../models/products.model.js";
 
 export default class ProductsDao {
   //Método asyncrono para obtener todos los productos
