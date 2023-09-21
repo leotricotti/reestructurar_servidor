@@ -53,12 +53,20 @@ async function forgotPassword(req, res) {
 }
 
 //Ruta que cierra la sesión
-const handleLogout = (req, res) => {
-  req.logout(() => {
-    req.session.destroy();
-    res.redirect("/");
-  });
-};
+async function handleLogout(req, res) {
+  try {
+    const logout = req.session.destroy();
+    if (logout) {
+      res.redirect("/");
+    } else {
+      res.status(401).json({
+        respuesta: "Algo salió mal. No hemos podido cerrar la sesión",
+      });
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 //Callback de github
 async function githubCallback(req, res) {

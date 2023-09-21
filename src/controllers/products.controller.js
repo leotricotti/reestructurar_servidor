@@ -51,20 +51,4 @@ async function getOne(req, res) {
   }
 }
 
-//Ruta que realiza el logout
-async function logout(req, res) {
-  try {
-    const logout = req.session.destroy();
-    if (logout) {
-      res.redirect("/");
-    } else {
-      res.status(401).json({
-        respuesta: "Algo salió mal. No hemos podido cerrar la sesión",
-      });
-    }
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-export { getAll, getOne, logout };
+export { getAll, getOne };

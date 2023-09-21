@@ -22,7 +22,7 @@ const initializePassport = () => {
         usernameField: "email",
       },
       async (req, username, password, done) => {
-        const { first_name, last_name, email, age } = req.body;
+        const { first_name, last_name, email } = req.body;
         let role;
         if (username !== ADMIN_ID || password !== ADMIN_PASSWORD) {
           role = "user";
